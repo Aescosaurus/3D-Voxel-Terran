@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DaylightCycle
+public class FPSLogger
     :
     MonoBehaviour
 {
+    float total = 0.0f;
+    int nInputs = 0;
     // Use this for initialization
     void Start()
     {
@@ -15,7 +17,8 @@ public class DaylightCycle
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate( Vector3.left,
-            Time.deltaTime );
+        total += ( 1.0f / Time.deltaTime );
+        ++nInputs;
+        print( total / ( float )nInputs );
     }
 }

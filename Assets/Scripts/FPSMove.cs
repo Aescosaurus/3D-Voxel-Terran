@@ -39,40 +39,43 @@ public class FPSMove
     {
         move = new Vector3( 0.0f,0.0f,0.0f );
 
-        float mouseMove = Mathf.Clamp( Input
-            .GetAxis( "Mouse Y" ),-5.0f,5.0f );
-        // print( mouseMove );
-
-        float dt = Time.deltaTime;
-        if( Time.deltaTime > 1.0f ) dt = 1.0f;
-
-        ViewCamera.transform.eulerAngles -=
-                new Vector3( mouseMove,
-                0.0f,0.0f ) *
-                RotSpeed * dt;
-
-        // 0 -> 70, 360 -> 290
-        float rotX = ViewCamera.transform.eulerAngles.x;
-        if( rotX > 70.0f && rotX < 90.0f )
+        if( hideMouse )
         {
-            rotX = 70.0f;
+            float mouseMove = Mathf.Clamp( Input
+                .GetAxis( "Mouse Y" ),-5.0f,5.0f );
+            // print( mouseMove );
+
+            float dt = Time.deltaTime;
+            if( Time.deltaTime > 1.0f ) dt = 1.0f;
+
+            ViewCamera.transform.eulerAngles -=
+                    new Vector3( mouseMove,
+                    0.0f,0.0f ) *
+                    RotSpeed * dt;
+
+            // 0 -> 70, 360 -> 290
+            float rotX = ViewCamera.transform.eulerAngles.x;
+            if( rotX > 70.0f && rotX < 90.0f )
+            {
+                rotX = 70.0f;
+            }
+            else if( rotX < 300.0f && rotX > 250.0f )
+            {
+                rotX = 300.0f;
+            }
+
+            ViewCamera.transform.eulerAngles = new
+                Vector3( rotX,
+                ViewCamera.transform.eulerAngles.y,
+                ViewCamera.transform.eulerAngles.z );
+
+            // print( ViewCamera.transform.eulerAngles.x );
+
+            transform.Rotate( Vector3.up,
+                Input.GetAxis( "Mouse X" ) * 2.0f );
+            Child.transform.Rotate( Vector3.up,
+                -Input.GetAxis( "Mouse X" ) * 2.0f );
         }
-        else if( rotX < 300.0f && rotX > 250.0f )
-        {
-            rotX = 300.0f;
-        }
-
-        ViewCamera.transform.eulerAngles = new
-            Vector3( rotX,
-            ViewCamera.transform.eulerAngles.y,
-            ViewCamera.transform.eulerAngles.z );
-
-        // print( ViewCamera.transform.eulerAngles.x );
-
-        transform.Rotate( Vector3.up,
-            Input.GetAxis( "Mouse X" ) * 2.0f );
-        Child.transform.Rotate( Vector3.up,
-            -Input.GetAxis( "Mouse X" ) * 2.0f );
 
         move.x = Input.GetAxis( "Horizontal" );
         move.z = Input.GetAxis( "Vertical" );
@@ -87,7 +90,7 @@ public class FPSMove
         {
             move.y += JumpHeight * Time.deltaTime;
         }
-        
+
         transform.Translate( move * MoveSpeed * Time.deltaTime );
     }
 }
