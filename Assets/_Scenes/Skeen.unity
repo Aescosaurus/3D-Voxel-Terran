@@ -225,7 +225,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &192061506
 MonoBehaviour:
@@ -304,7 +304,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 192061504}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 30, z: 0}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 0.8, y: 1.6, z: 0.8}
   m_Children:
   - {fileID: 1798573846}
@@ -392,7 +392,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4810025293328324, guid: b6c3287451af49c41952bfe13f24ea21, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 29.44
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4810025293328324, guid: b6c3287451af49c41952bfe13f24ea21, type: 2}
       propertyPath: m_LocalPosition.z
@@ -418,6 +418,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 54762185581694920, guid: b6c3287451af49c41952bfe13f24ea21,
+        type: 2}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 54762185581694920, guid: b6c3287451af49c41952bfe13f24ea21,
+        type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b6c3287451af49c41952bfe13f24ea21, type: 2}
   m_IsPrefabParent: 0
@@ -437,7 +447,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc8226a7abb40274ca0d188598277740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  JumpHeight: 1
+  JumpHeight: 5
+  MoveSpeed: 1.2
+  RotAmount: 2
 --- !u!1 &1798573840
 GameObject:
   m_ObjectHideFlags: 0

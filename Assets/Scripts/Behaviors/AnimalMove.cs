@@ -7,8 +7,13 @@ public class AnimalMove
     MonoBehaviour
 {
     public float JumpHeight;
+    public float MoveSpeed;
+    public float RotAmount;
 
     bool jumping = false;
+    bool canJump = false;
+    bool moving = false;
+    bool rotating = false;
     // Use this for initialization
     void Start()
     {
@@ -18,15 +23,33 @@ public class AnimalMove
     // Update is called once per frame
     void Update()
     {
-        if( Random.Range( 0,100 ) < 10 )
+        var move = new Vector3( 0.0f,0.0f,0.0f );
+        if( Random.Range( 0,1000 ) < 5 && canJump )
         {
-            jumping = !jumping;
+            jumping = true;
+            canJump = false;
+        }
+        if( Random.Range( 0,1000 ) < 50 )
+        {
+            moving = !moving;
+        }
+        if( Random.Range( 0,1000 ) < 100 )
+        {
+            rotating = !rotating;
+            if( Random.Range( 0,10 ) > 5 ) RotAmount *= -1;
         }
 
-        if( jumping )
-        {
-            transform.Translate( new Vector3( 0.0f,JumpHeight,0.0f ) *
-                Time.deltaTime );
-        }
+        if( jumping ) move.y = JumpHeight;
+        if( moving ) move.z += MoveSpeed;
+        if( rotating ) transform.Rotate( Vector3.up,RotAmount );
+        // print( RotAmount );
+        
+        transform.Translate( move * Time.deltaTime );
+    }
+
+    void OnCollisionEnter( Collision other )
+    {
+        jumping = false;
+        canJump = true;
     }
 }
