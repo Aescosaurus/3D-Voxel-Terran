@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///     Controls AI movement.
+/// </summary>
 public class AnimalMove
     :
     MonoBehaviour

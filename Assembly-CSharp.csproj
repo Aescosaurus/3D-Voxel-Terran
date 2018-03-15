@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\DaylightCycle.cs" />
      <Compile Include="Assets\Scripts\FPSLogger.cs" />
      <Compile Include="Assets\Scripts\FPSMove.cs" />
+     <Compile Include="Assets\Scripts\FPSMoveOld.cs" />
      <Compile Include="Assets\Scripts\RandomColor.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

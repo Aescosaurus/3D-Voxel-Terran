@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///     Spawns chunks procedurally around you.
+/// </summary>
 public class ChunkCreator
     :
     MonoBehaviour

@@ -2,10 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+///     Spawns chunks within a specified range.
+/// </summary>
 public class MapSpawner
     :
     MonoBehaviour
 {
+    public GameObject World;
     public GameObject ChunkPrefab;
     public Vector3 min;
     public Vector3 max;
@@ -22,8 +26,12 @@ public class MapSpawner
             for( float z = min.z; z < max.z; z += chunkScript.Length / 2 )
             {
                 chunks.Add( Instantiate( ChunkPrefab ) );
+
                 chunks[chunks.Count - 1].GetComponent<Chunk>()
                     .SetPosSafe( new Vector3( x,0.0f,z ) );
+
+                chunks[chunks.Count - 1].transform
+                    .SetParent( World.transform );
             }
         }
     }

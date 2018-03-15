@@ -2,11 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-///     Attach to player game object and fill in child game objects ViewCamera
-///      with a camera and Child with a game object with collider.
-/// </summary>
-public class FPSMove
+public class FPSMoveOld
     :
     MonoBehaviour
 {
@@ -85,10 +81,8 @@ public class FPSMove
 
             transform.Rotate( Vector3.up,
                 Input.GetAxis( "Mouse X" ) * 2.0f );
-            // Child.transform.Rotate( Vector3.up,
-            //     -Input.GetAxis( "Mouse X" ) * 2.0f );
-
-            // Child.transform.eulerAngles = new Vector3( 0.0f,0.0f,0.0f );
+            Child.transform.Rotate( Vector3.up,
+                -Input.GetAxis( "Mouse X" ) * 2.0f );
         }
 
         move.x = Input.GetAxis( "Horizontal" );
